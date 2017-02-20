@@ -1,0 +1,49 @@
+@mixin spriteWidth($sprite) { width: nth($sprite, 5); }
+@mixin spriteHeight($sprite) { height: nth($sprite, 6); }
+@mixin spritePosition($sprite) { background-position: nth($sprite, 3) nth($sprite, 4); }
+@mixin spriteImage($sprite) {
+	$url:"../images/#{nth($sprite, 9)}";
+	background-image: url($url); 
+}
+
+@mixin sprite($sprite) {
+	@include spriteImage($sprite);
+	@include spritePosition($sprite);
+	@include spriteWidth($sprite);
+	@include spriteHeight($sprite);
+}
+/*5 - width, 6 - height*/
+$colors: (
+  text : #000,
+  desc : #888888,
+  purple : #56304f
+);
+
+
+$s320: 420px;
+$s610: 670px;
+$s760: 880px;
+$s1024: 1024px;
+$s1280: 1400px;
+$s1600: 1600px;
+
+@mixin respond-to($media) {
+  @if $media == s320 {
+    @media only screen and (max-width: $s320) { @content; }
+  }
+  @else if $media == s610 {
+    @media only screen and (max-width: $s610) { @content; }
+  }
+  @else if $media == s760 {
+    @media only screen and (max-width: $s760) { @content; }
+  }
+  @else if $media == s1024 {
+    @media only screen and (max-width: $s1024) { @content; }
+  }
+  @else if $media == s1280 {
+    @media only screen and (max-width: $s1280) { @content; }
+  }
+  @else if $media == s1600 {
+    @media only screen and (max-width: $s1600) { @content; }
+  }
+}
