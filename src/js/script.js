@@ -113,6 +113,12 @@ function initWorks(){
 		}
 	  $("#content").append($el);
 	}
+
+	var fixFlexLastRow = "<span class='emptyItemFix'></span>";
+	for( var i=0; i< Object.keys(works).length; i++){
+		$("#content").append(fixFlexLastRow);
+	}
+	
 }
 
 function initmenu(){
@@ -180,7 +186,7 @@ function animateScrollElements(){
 			$el.addClass("completeAnimation");
 			TweenMax.set($imgCont ,{clearProps:"transform"});
 		}
-		scene = new ScrollMagic.Scene({triggerElement: $el, triggerHook: 'onEnter', offset: $elIW.outerHeight()*0.75, reverse: false})
+		scene = new ScrollMagic.Scene({triggerElement: $el, triggerHook: 'onEnter', offset: $elIW.outerHeight()*0.5, reverse: false})
 		.setTween(tween)
 		//.addIndicators()
 		.addTo(controller);
@@ -233,6 +239,8 @@ function changeActiveSection(){
 			$allElements.not($thisElements).addClass("inactive");
 			$thisElements.addClass("active");
 
+			window.location.hash = "#" + thisClass;
+
 			animateScrollElements();
 		}
 	});
@@ -268,4 +276,10 @@ $(document).ready(function(){
 	goNiceScroll();
 	slideMenu();
 	imgLoad();
+  if (window.location.hash.length > 0) {
+      var thisClass = window.location.hash.substr(1);
+      console.log(thisClass);
+      //Hammer( $("#menu .item."+thisClass+"") ).trigger('tap', eventData);
+      $("#menu .item."+thisClass+"").hammer().trigger("tap");
+  }
 });
