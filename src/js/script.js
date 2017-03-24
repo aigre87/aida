@@ -181,12 +181,12 @@ function animateScrollElements(){
 				tween = new TimelineMax({ delay:thisRandomDelay, onComplete: afterAnimation })
 				.to($elIW, 0.9, {opacity: '1'}, 0)
 				.to($elIW, 0.6, {y : 0 , ease: Sine.easeOut}, 0)
-				.to($imgCont, 0.55, {y : "0%", opacity: 1, ease: Sine.easeOut }, 0.15);
+				.to($imgCont, 0.6, {y : "0%", opacity: 1, ease: Sine.easeOut }, 0.15);
 		function afterAnimation(){
 			$el.addClass("completeAnimation");
 			TweenMax.set($imgCont ,{clearProps:"transform"});
 		}
-		scene = new ScrollMagic.Scene({triggerElement: $el, triggerHook: 'onEnter', offset: $elIW.outerHeight()*0.5, reverse: false})
+		scene = new ScrollMagic.Scene({triggerElement: $el, triggerHook: 'onEnter', offset: $elIW.outerHeight()*0.4, reverse: false})
 		.setTween(tween)
 		//.addIndicators()
 		.addTo(controller);
@@ -239,7 +239,7 @@ function changeActiveSection(){
 			$allElements.not($thisElements).addClass("inactive");
 			$thisElements.addClass("active");
 
-			window.location.hash = "#" + thisClass;
+			//window.location.hash = "#" + thisClass;
 
 			animateScrollElements();
 		}
@@ -276,10 +276,10 @@ $(document).ready(function(){
 	goNiceScroll();
 	slideMenu();
 	imgLoad();
-  if (window.location.hash.length > 0) {
-      var thisClass = window.location.hash.substr(1);
-      console.log(thisClass);
-      //Hammer( $("#menu .item."+thisClass+"") ).trigger('tap', eventData);
-      $("#menu .item."+thisClass+"").hammer().trigger("tap");
-  }
+  // if (window.location.hash.length > 0) {
+  //     var thisClass = window.location.hash.substr(1);
+  //     console.log(thisClass);
+  //     //Hammer( $("#menu .item."+thisClass+"") ).trigger('tap', eventData);
+  //     $("#menu .item."+thisClass+"").hammer().trigger("tap");
+  // }
 });

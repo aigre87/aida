@@ -519,7 +519,7 @@ div{
 	}
 	&.completeAnimation{
 		.imgContainerIW{
-
+			transition: transform 0.25s ease-in-out;
 		}
 	}
 	&.completeAnimation:hover{
@@ -575,7 +575,6 @@ div{
 			backface-visibility: hidden;
 			-webkit-backface-visibility: hidden; 
 			transform: perspective(1px) translate3d( 0, 0, 0) scale(1);
-			transition: transform 0.25s ease-in-out;
 			display: block;
 			position: absolute;
 			top: 0;
